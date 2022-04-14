@@ -1,4 +1,4 @@
-ame: docker-build-push
+name: docker-build-push
 
 #on: [push]
 on:
