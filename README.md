@@ -13,7 +13,7 @@ Part 1 - Dockerize it
 - to view the project you open a browser and go to ip and port
 - localhost:8080
 
-Part 2 -
+Part 2 - GitHub Actions and DockerHub
 - Creating proccess:
 	- Go to Dockerhub in browser.
 	-  Sign into your DockerHub
@@ -29,5 +29,37 @@ Part 2 -
 	- You can create your secrets by making  one secret called "DOCKER_USERNAME" with your docker username, and the other "DOCKER_PASSSWORD" with the contents of the token you created.
 - Configure Github Workflow:
 	- Add your docker secrets and your image name
+	- The only thing that would need changed is the repository name
+Part 3 - Deployment
 
+- Container restart script
+    - What it does?
+    
+      The script will kill all of the  other old versions of the container, as well as  any unused containers or images. The script will also get updated images and run the container on port 80.
+
+- Webhook task defintion file
+    - What it does?
+    
+      It will define the files the webhook needs to call, and  use the webnook you created in docker, and use that id to call the server. It will also call on push-restart.
+     
+
+- Setting up a webhook on the server
+
+    - How you created you own listener:
+    
+                    sudo ./pull-restart.sh -hooks redeploy.json
+                    
+                    webnook -hooks path/to/webnook-config.json -verbose
+                
+    - How you installed and are running the webhook on Github?
+    
+      I installed webhook by sudo apt-get insall webhook and using the link from github. 
+     
+      
+   - Setting up a notifier in GitHub or DockerHub
+   
+      To be notified in Github, I went into settings in the repo and went to the webhooks tab, and I entered the url I made for Dockerhub and put "notify me on everything."
+
+
+Part 4 - Diagramming 
 
