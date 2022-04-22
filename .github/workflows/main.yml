@@ -1,40 +1,26 @@
-name: Docker-Login-Build-Push
+name: docker-build-push
 
-on:
-  push:
-    branches: [main]
+on: [push]
 
 env:
-  # variable holding my repo folder name (using DockerHub is assumed)
-  DOCKER_HUB_REPO: markpeterangeloproject5
-# jobs - each jobs runs on a runner - parralel by deafult, can be dependent based on id
-#     https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#jobs
+  DOCKER_REPO: mysite
+
 jobs:
-  build_and_push:
-    name: Build docker image and push to Docker Hub
-    # OS of runner
+  docker-build-push:
     runs-on: ubuntu-latest
     steps:
-      # checkout repo contents to runner
-      - 
-        name: Checkout repo to runner
-        uses: actions/checkout@v2
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-      # Login in to DockerHub, credentials stored as GitHub repository secrets
-      #    Usage documentation: https://github.com/marketplace/actions/docker-login
-      - 
-        name: Login to DockerHub
-        uses: docker/login-action@v1 
+      - name: checking out repo
+        uses: actions/checkout@v3
+      - run: echo "post-checkout" && ls -lah && pwd
+      - name: login to docker hub 
+        uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      - 
-        name: Build and push
- 
-        id: docker_build 
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+      - name: docker buildx
+        uses: docker/setup-buildx-action@v1
+      - name: build and push
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_HUB_REPO }}/markpeterangelo/markpeterangeloproject5:latest
-
+          tags: ${{secrets.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}:latest
