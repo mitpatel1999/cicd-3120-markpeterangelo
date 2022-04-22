@@ -30,6 +30,7 @@ Part 2 - GitHub Actions and DockerHub
 - Configure Github Workflow:
 	- Add your docker secrets and your image name
 	- The only thing that would need changed is the repository name
+
 Part 3 - Deployment
 
 - Container restart script
