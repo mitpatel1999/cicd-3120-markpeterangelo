@@ -49,7 +49,7 @@ Part 3 - Deployment
     
                     sudo ./pull-restart.sh -hooks redeploy.json
                     
-                    webnook -hooks path/to/webnook-config.json -verbose
+                    webhook -hooks path/to/webhook-config.json -verbose
                 
     - How you installed and are running the webhook on Github?
     
@@ -63,3 +63,4 @@ Part 3 - Deployment
 
 Part 4 - Diagramming 
 
+![Diagram]()
