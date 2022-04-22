@@ -1,11 +1,8 @@
 FROM httpd:2.4
 
-RUN apt update
-RUN apt install -y python3 python3-pip
-#run pip install more libraries
+#RUN apt install -y python3
 
-#EXPOSE 8000:80
+COPY html/ /usr/local/apache2/htdocs/
 
-COPY html/index.html /usr/local/apache2/htdocs/
+EXPOSE 80
 
-EXPOSE 8080
