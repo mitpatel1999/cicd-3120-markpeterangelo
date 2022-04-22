@@ -64,4 +64,5 @@ Part 3 - Deployment
 
 Part 4 - Diagramming 
 
-![Diagram]()
+![Diagram](https://user-images.githubusercontent.com/70331126/164571361-1072306d-1c87-4c08-8ae2-55da99045ee1.png)
+
