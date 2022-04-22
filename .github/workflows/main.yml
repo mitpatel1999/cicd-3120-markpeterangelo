@@ -3,7 +3,7 @@ name: docker-build-push
 on: [push]
 
 env:
-  DOCKER_REPO: mysite
+  DOCKER_REPO: markpeterangeloproject5
 
 jobs:
   docker-build-push:
